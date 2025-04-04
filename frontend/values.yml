@@ -1,0 +1,4 @@
+deployment:
+  imageVersion: v2
+hpa:
+  utilisation: 5
