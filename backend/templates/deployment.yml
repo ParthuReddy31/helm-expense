@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: expense
+  labels:
+    app: backend
+    teir: backend
+    project: expense
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+      teir: backend
+      project: expense
+  template:
+    metadata:
+      labels:
+        app: backend
+        teir: backend
+        project: expense
+    spec:
+      containers:
+      - name: backend
+        image: parthureddy3/backend:{{ .Values.deployment.imageVersion }}
+        envFrom:
+        - configMapRef:
+            name: backend
